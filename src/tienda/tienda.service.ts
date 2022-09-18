@@ -25,10 +25,10 @@ export class TiendaService {
     }
 
     async create(tienda: TiendaEntity): Promise<TiendaEntity> {
-        if(tienda.ciudad == 'SMR' || tienda.ciudad == 'BOG' || tienda.ciudad == 'MED'){
+        if(tienda.ciudad.length == 3){
             return await this.tiendaRepository.save(tienda);
         }else{
-            throw new BusinessLogicException("The store with the given id was not in the target type", BusinessError.NOT_FOUND);
+            throw new BusinessLogicException("The store with the given id did not have the correct length", BusinessError.NOT_FOUND);
         }
         
     }
@@ -38,7 +38,7 @@ export class TiendaService {
         if (!persistedTienda)
           throw new BusinessLogicException("The store with the given id was not found", BusinessError.NOT_FOUND);
         
-        if(tienda.ciudad == 'SMR' || tienda.ciudad == 'BOG' || tienda.ciudad == 'MED'){
+        if(tienda.ciudad.length == 3){
             return await this.tiendaRepository.save({...persistedTienda, ...tienda});
         }else{
             throw new BusinessLogicException("The store with the given id was not in the database", BusinessError.NOT_FOUND);
