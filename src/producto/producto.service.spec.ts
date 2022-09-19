@@ -81,7 +81,7 @@ describe('ProductoService', () => {
     const producto: ProductoEntity = productosList[0];
     producto.nombre = "New name";
     producto.precio = 1;
-    producto.tipo = "New Type"
+    producto.tipo = "New Type";
 
     const updatedProducto: ProductoEntity = await service.update(producto.id, producto);
     expect(updatedProducto).not.toBeNull();

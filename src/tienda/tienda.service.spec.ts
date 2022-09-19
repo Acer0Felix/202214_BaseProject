@@ -81,7 +81,7 @@ describe('TiendaService', () => {
     const tienda: TiendaEntity = tiendasList[0];
     tienda.nombre = "New name";
     tienda.ciudad = "New City";
-    tienda.dirección = "New Address"
+    tienda.dirección = "New Address";
 
     const updatedProducto: TiendaEntity = await service.update(tienda.id, tienda);
     expect(updatedProducto).not.toBeNull();
